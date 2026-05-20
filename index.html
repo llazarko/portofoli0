@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="sq">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Llazarko Shukle | Frontend Developer & Creative Web Designer</title>
+    <meta name="title" content="Llazarko Shukle | Frontend Developer & Web Designer">
+    <meta name="description"
+        content="Frontend Developer kreativ i specializuar në website moderne, UI/UX, animacione dhe zgjidhje dixhitale për biznese. Bazuar në Tiranë, Shqipëri.">
+    <meta name="keywords"
+        content="Llazarko Shukle, Frontend Developer, Web Designer, UI UX Designer, JavaScript, React, HTML5, CSS3, Website Shqip, Tiranë">
+    <meta name="author" content="Llazarko Shukle">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Llazarko Shukle | Frontend Developer & Creative Web Designer">
+    <meta property="og:description"
+        content="Krijoj website moderne, responsive dhe vizualisht tërheqëse. Specializim në UI/UX, animacione dhe eksperienca interaktive web.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sq_AL">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2366d9ef'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='%23000' font-family='monospace'%3E%3C/text%3E%3C/svg%3E">
+
+    <!-- Fonts & Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Caveat:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="neo-styles.css">
+
+    <style>
+        /* Additional custom styles */
+        .timeline-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateX(8px);
+            box-shadow: 12px 12px 0 var(--border);
+        }
+
+        /* Terminal link in footer */
+        .footer-terminal-link-compact i {
+            margin-right: 6px;
+        }
+
+        /* Hero photo adjustments */
+        .hero-photo {
+            object-position: center 30%;
+        }
+
+        /* Journey timeline - frontend focused */
+        .timeline-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--cyan);
+            border: 2px solid var(--border);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Contact cards hover effect */
+        .contact-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        /* ============================================ */
+        /* LANGUAGE DROPDOWN - NEON CARTOON STYLE */
+        /* ============================================ */
+        .lang-dropdown {
+            position: relative;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .lang-dropdown-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: var(--cyan);
+            border: 3px solid var(--border);
+            border-radius: 60px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 4px 4px 0 var(--border);
+        }
+
+        .lang-dropdown-btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--border);
+            background: var(--yellow);
+        }
+
+        .lang-dropdown-btn i {
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        .lang-dropdown.active .lang-dropdown-btn i {
+            transform: rotate(180deg);
+        }
+
+        .lang-flag-dropdown {
+            border-radius: 3px;
+            object-fit: cover;
+        }
+
+        .lang-dropdown-content {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            min-width: 130px;
+            background: var(--white);
+            border: 3px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 8px 8px 0 var(--border);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow: hidden;
+        }
+
+        .lang-dropdown.active .lang-dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--white);
+            border: none;
+            border-bottom: 2px solid var(--border);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-option:last-child {
+            border-bottom: none;
+        }
+
+        .lang-option:hover {
+            background: var(--yellow);
+            transform: translateX(4px);
+        }
+
+        .lang-option img {
+            border-radius: 3px;
+            object-fit: cover;
+        }
+
+        /* Neon pulse animation */
+        @keyframes neonPulse {
+            0% { box-shadow: 4px 4px 0 var(--border), 0 0 0px var(--cyan); }
+            50% { box-shadow: 4px 4px 0 var(--border), 0 0 12px var(--cyan); }
+            100% { box-shadow: 4px 4px 0 var(--border), 0 0 0px var(--cyan); }
+        }
+
+        .lang-dropdown-btn {
+            animation: neonPulse 2s ease-in-out infinite;
+        }
+
+        /* Dark mode */
+        body[data-theme="dark"] .lang-dropdown-content {
+            background: #2a2a2a;
+        }
+
+        body[data-theme="dark"] .lang-option {
+            background: #2a2a2a;
+            border-bottom-color: var(--border);
+            color: #fff;
+        }
+
+        body[data-theme="dark"] .lang-option:hover {
+            background: var(--cyan);
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .lang-dropdown-btn {
+                padding: 4px 10px;
+                font-size: 0.7rem;
+                gap: 5px;
+            }
+            .lang-dropdown-content {
+                min-width: 110px;
+                right: -5px;
+            }
+            .lang-option {
+                padding: 7px 10px;
+                font-size: 0.7rem;
+            }
+            .lang-option img {
+                width: 18px;
+                height: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loader-overlay">
+        <div class="loader-shapes">
+            <div class="loader-shape-svg loader-shape-1">
+                <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
+                    <rect x="6" y="6" width="88" height="88" rx="8" fill="#66d9ef" stroke="#000" stroke-width="4" />
+                    <path d="M35 40 L20 50 L35 60" stroke="#000" stroke-width="5" stroke-linecap="round" />
+                    <path d="M65 40 L80 50 L65 60" stroke="#000" stroke-width="5" stroke-linecap="round" />
+                    <line x1="55" y1="35" x2="45" y2="65" stroke="#000" stroke-width="5" />
+                </svg>
+            </div>
+            <div class="loader-shape-svg loader-shape-2">
+                <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
+                    <rect x="6" y="6" width="88" height="88" rx="8" fill="#ffd93d" stroke="#000" stroke-width="4" />
+                    <path d="M25 35 L40 50 L25 65" stroke="#000" stroke-width="5" stroke-linecap="round" />
+                    <line x1="50" y1="65" x2="75" y2="65" stroke="#000" stroke-width="5" />
+                </svg>
+            </div>
+            <div class="loader-shape-svg loader-shape-3">
+                <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
+                    <rect x="6" y="6" width="88" height="88" rx="8" fill="#a8e6cf" stroke="#000" stroke-width="4" />
+                    <rect x="20" y="20" width="60" height="60" rx="3" fill="#ffd93d" stroke="#000" stroke-width="4" />
+                    <rect x="30" y="20" width="40" height="20" fill="#66d9ef" stroke="#000" stroke-width="3" />
+                    <circle cx="50" cy="35" r="3" fill="#000" />
+                </svg>
+            </div>
+        </div>
+        <div class="loader-wrapper">
+            <div class="loader-letter">Ll</div>
+            <div class="loader-letter">Sh</div>
+        </div>
+        <div class="loader-progress-bar">
+            <div class="loader-progress-fill"></div>
+        </div>
+    </div>
+
+    <div class="page-wrapper">
+        <!-- Progress Bar -->
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill"></div>
+            <div class="progress-checkpoints">
+                <div class="checkpoint" data-section="hero"><div class="checkpoint-dot"></div><span class="checkpoint-label" data-lang-key="nav_home">Kreu</span></div>
+                <div class="checkpoint" data-section="about"><div class="checkpoint-dot"></div><span class="checkpoint-label" data-lang-key="nav_about">Rreth Meje</span></div>
+                <div class="checkpoint" data-section="experience"><div class="checkpoint-dot"></div><span class="checkpoint-label" data-lang-key="nav_experience">Eksperienca</span></div>
+                <div class="checkpoint" data-section="skills"><div class="checkpoint-dot"></div><span class="checkpoint-label" data-lang-key="nav_skills">Aftësitë</span></div>
+                <div class="checkpoint" data-section="contact"><div class="checkpoint-dot"></div><span class="checkpoint-label" data-lang-key="nav_contact">Kontakt</span></div>
+            </div>
+        </div>
+
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="nav-content">
+                <a href="#" class="nav-brand">{ LlSh }</a>
+                <div class="nav-right">
+                    <a href="#hero" class="nav-link" data-lang-key="nav_home">Kreu</a>
+                    <a href="#about" class="nav-link" data-lang-key="nav_about">Rreth Meje</a>
+                    <a href="#experience" class="nav-link" data-lang-key="nav_experience">Eksperienca</a>
+                    <a href="#skills" class="nav-link" data-lang-key="nav_skills">Aftësitë</a>
+                    <a href="#contact" class="nav-cta" data-lang-key="nav_cta">Kontakto!</a>
+
+                    <!-- Language Dropdown -->
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="lang-dropdown-btn" id="langDropdownBtn">
+                            <img src="https://flagcdn.com/w40/al.png" alt="Language" class="lang-flag-dropdown" width="20" height="14" id="currentLangFlag">
+                            <span id="currentLangText">SQ</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="lang-dropdown-content">
+                            <button class="lang-option" data-lang="sq">
+                                <img src="https://flagcdn.com/w40/al.png" alt="Shqip" width="22" height="14">
+                                <span>Shqip</span>
+                            </button>
+                            <button class="lang-option" data-lang="en">
+                                <img src="https://flagcdn.com/w40/gb.png" alt="English" width="22" height="14">
+                                <span>English</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- HERO SECTION -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <p class="hero-greeting" id="hero-greeting" data-lang-key="hero_greeting">Përshëndetje! 👋</p>
+                    <h1 class="hero-name" data-lang-key="hero_name">Unë jam Llazarko Shukle.</h1>
+                    <p class="hero-description" data-lang-key="hero_desc">
+                        Frontend Developer & Web Designer kreativ, i bazuar në Tiranë, Shqipëri.
+                        Krijoj website moderne, responsive dhe plot animacione.
+                        I apasionuar pas UI/UX design dhe zgjidhjeve kreative dixhitale.
+                    </p>
+                    <div class="hero-social">
+                        <a href="https://github.com/llazarko" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/llazarko-shukle" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://codepen.io/llazarko" target="_blank" class="social-btn"><i class="fab fa-codepen"></i></a>
+                    </div>
+                    <div class="hero-cta-container">
+                        <div class="coffee-cta-wrapper">
+                            <div class="coffee-arrow">
+                                <span class="coffee-arrow-text" data-lang-key="coffee">Ofro një kafe</span>
+                                <img src="image/arrow.png" alt="arrow" class="coffee-arrow-img" width="140" height="140">
+                            </div>
+                            <a href="https://paypal.me/LlazarkoShukle92" target="_blank" class="btn-coffee">
+                                <img src="image/caffe-icon.gif" alt="Coffee" class="coffee-icon-img" width="52" height="52">
+                            </a>
+                        </div>
+                        <a href="#contact" class="btn-cta" data-lang-key="hero_cta">Kontakto!</a>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-image-wrapper">
+                        <div class="tape-sticker"></div>
+                        <img src="image/avatar-gpt.jpg" alt="Llazarko Shukle" class="hero-photo" width="400" height="400" fetchpriority="high">
+                        <div class="deco-code">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                <rect x="10" y="10" width="40" height="40" fill="#ff6b9d" stroke="#000" stroke-width="3" />
+                                <path d="M25 25L20 30L25 35" stroke="#000" stroke-width="3" fill="none" />
+                                <path d="M35 25L40 30L35 35" stroke="#000" stroke-width="3" fill="none" />
+                            </svg>
+                        </div>
+                        <div class="deco-terminal">
+                            <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+                                <rect x="5" y="10" width="40" height="30" fill="#a8e6cf" stroke="#000" stroke-width="3" />
+                                <circle cx="15" cy="20" r="3" fill="#000" />
+                                <circle cx="25" cy="20" r="3" fill="#000" />
+                                <circle cx="35" cy="20" r="3" fill="#000" />
+                            </svg>
+                        </div>
+                        <div class="deco-label" data-lang-key="deco_label">Frontend Dev</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-badges">
+                <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="tech-badge"><i class="fab fa-react"></i> React</span>
+                <span class="tech-badge"><i class="fab fa-figma"></i> Figma</span>
+                <span class="tech-badge"><i class="fas fa-mobile-alt"></i> Responsive</span>
+                <span class="tech-badge"><i class="fas fa-code"></i> UI/UX</span>
+            </div>
+        </section>
+
+        <!-- Paper Tear Effect -->
+        <div class="paper-tear paper-tear-top">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 30" preserveAspectRatio="none">
+                <path d="M0,30 L1200,30 L1200,0 C1195,5 1185,8 1175,5 C1165,2 1155,10 1145,8 C1135,6 1125,2 1115,5 C1105,8 1095,12 1085,10 C1075,8 1065,5 1055,8 C1045,11 1035,15 1025,12 C1015,9 1005,5 995,8 C985,11 975,15 965,13 C955,11 945,8 935,10 C925,12 915,15 905,14 C895,13 885,10 875,12 C865,14 855,17 845,15 C835,13 825,10 815,13 C805,16 795,19 785,17 C775,15 765,12 755,14 C745,16 735,19 725,18 C715,17 705,14 695,16 C685,18 675,21 665,19 C655,17 645,14 635,17 C625,20 615,23 605,21 C595,19 585,16 575,18 C565,20 555,23 545,22 C535,21 525,18 515,20 C505,22 495,25 485,23 C475,21 465,18 455,21 C445,24 435,27 425,25 C415,23 405,20 395,22 C385,24 375,27 365,26 C355,25 345,22 335,24 C325,26 315,29 305,27 C295,25 285,22 275,25 C265,28 255,30 245,28 L0,30 Z" fill="#d0d0d0" stroke="#000" stroke-width="2" />
+            </svg>
+        </div>
+        <div class="page-gap"></div>
+        <div class="paper-tear paper-tear-bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 30" preserveAspectRatio="none">
+                <path d="M0,0 L1200,0 L1200,30 C1195,25 1185,22 1175,25 C1165,28 1155,20 1145,22 C1135,24 1125,28 1115,25 C1105,22 1095,18 1085,20 C1075,22 1065,25 1055,22 C1045,19 1035,15 1025,18 C1015,21 1005,25 995,22 C985,19 975,15 965,17 C955,19 945,22 935,20 C925,18 915,15 905,16 C895,17 885,20 875,18 C865,16 855,13 845,15 C835,17 825,20 815,17 C805,14 795,11 785,13 C775,15 765,18 755,16 C745,14 735,11 725,12 C715,13 705,16 695,14 C685,12 675,9 665,11 C655,13 645,16 635,13 C625,10 615,7 605,9 C595,11 585,14 575,12 C565,10 555,7 545,8 C535,9 525,12 515,10 C505,8 495,5 485,7 C475,9 465,12 455,9 C445,6 435,3 425,5 C415,7 405,10 395,8 C385,6 375,3 365,4 C355,5 345,8 335,6 C325,4 315,1 305,3 C295,5 285,8 275,5 C265,2 255,0 245,2 L0,0 Z" fill="#ffffff" stroke="#000" stroke-width="2" />
+            </svg>
+        </div>
+        <div class="tear-tape-sticker"></div>
+
+        <div class="container">
+            <!-- ABOUT SECTION -->
+            <section class="section" id="about">
+                <h2 class="section-title" data-lang-key="about_title">RRETH MEJE</h2>
+                <div class="card">
+                    <p class="text" data-lang-key="about_p1">
+                        <span class="highlight highlight-yellow">Frontend Developer & Web Designer</span> kreativ dhe i motivuar,
+                        i fokusuar në krijimin e website-ve moderne, responsive dhe vizualisht tërheqëse.
+                        Punoj në projekte për <span class="highlight highlight-pink">restorante, agjenci turistike dhe biznese lokale</span>,
+                        duke krijuar eksperienca që kombinojnë dizajn të pastër me funksionalitet.
+                    </p>
+                    <p class="text" data-lang-key="about_p2">
+                        Pasioni im për <span class="highlight highlight-cyan">UI/UX design dhe frontend development</span>
+                        më shtyn të përmirësoj vazhdimisht aftësitë e mia dhe të qëndroj i përditësuar me trendet dhe teknologjitë më të fundit web.
+                    </p>
+                    <p class="text" data-lang-key="about_p3">
+                        Kënaqem duke krijuar eksperienca <span class="highlight highlight-green">mobile-first</span>,
+                        <span class="highlight highlight-yellow">të optimizuara për SEO</span> dhe
+                        <span class="highlight highlight-cyan">me konvertim të lartë</span> që ndihmojnë bizneset të rriten online.
+                    </p>
+                </div>
+            </section>
+
+            <!-- EXPERIENCE SECTION -->
+            <section class="section journey-section" id="experience">
+                <h2 class="section-title-center" data-lang-key="exp_title">Rrugëtimi Im si Frontend</h2>
+                <div class="journey-container">
+                    <div class="journey-timeline personalized-timeline">
+                        <h3 class="timeline-header" data-lang-key="exp_subtitle">Eksperienca & Projektet Kryesore</h3>
+                        <div class="timeline-list">
+                            <div class="timeline-card">
+                                <div class="timeline-left">
+                                    <span class="timeline-year">2023 - Present</span>
+                                    <span class="timeline-badge">Freelance</span>
+                                </div>
+                                <div class="timeline-right">
+                                    <h4 class="timeline-title">Frontend Developer i Pavarur</h4>
+                                    <p class="timeline-role" data-lang-key="exp1_role">Web Designer & Frontend Dev</p>
+                                    <p class="timeline-description" data-lang-key="exp1_desc1">
+                                        Kam realizuar website të plota për biznese lokale duke përfshirë restorante,
+                                        dyqane online dhe agjenci turistike. Fokusi kryesor është në krijimin e UI/UX intuitive dhe responsive.
+                                    </p>
+                                    <p class="timeline-location"><i class="fas fa-map-marker-alt"></i> Tiranë, Shqipëri (Remote)</p>
+                                </div>
+                            </div>
+                            <div class="timeline-card">
+                                <div class="timeline-left">
+                                    <span class="timeline-year">2021 - 2023</span>
+                                    <span class="timeline-badge">Agency</span>
+                                </div>
+                                <div class="timeline-right">
+                                    <h4 class="timeline-title">Digital Creative Agency</h4>
+                                    <p class="timeline-role" data-lang-key="exp2_role">Frontend Developer</p>
+                                    <p class="timeline-description" data-lang-key="exp2_desc1">
+                                        Kam punuar në ekip për të realizuar website për klientë ndërkombëtarë.
+                                        Përgjegjësitë përfshinin implementimin e dizajneve në kod, optimizimin e performancës.
+                                    </p>
+                                    <p class="timeline-location"><i class="fas fa-map-marker-alt"></i> Tiranë, Shqipëri</p>
+                                </div>
+                            </div>
+                            <div class="timeline-card">
+                                <div class="timeline-left">
+                                    <span class="timeline-year">2019 - 2021</span>
+                                    <span class="timeline-badge">Junior Dev</span>
+                                </div>
+                                <div class="timeline-right">
+                                    <h4 class="timeline-title">Startup Lab</h4>
+                                    <p class="timeline-role" data-lang-key="exp3_role">Frontend Trainee → Junior Developer</p>
+                                    <p class="timeline-description" data-lang-key="exp3_desc1">
+                                        Fillova rrugëtimin tim duke mësuar HTML, CSS dhe JavaScript nga bazat.
+                                    </p>
+                                    <p class="timeline-location"><i class="fas fa-map-marker-alt"></i> Tiranë, Shqipëri</p>
+                                </div>
+                            </div>
+                            <div class="timeline-card">
+                                <div class="timeline-left">
+                                    <span class="timeline-year">2018 - 2019</span>
+                                    <span class="timeline-badge">Self-taught</span>
+                                </div>
+                                <div class="timeline-right">
+                                    <h4 class="timeline-title">Self-learning & Personal Projects</h4>
+                                    <p class="timeline-role" data-lang-key="exp4_role">Autodidakt</p>
+                                    <p class="timeline-description" data-lang-key="exp4_desc1">
+                                        Fillova të mësoj programimin në mënyrë të pavarur përmes kurseve online.
+                                    </p>
+                                    <p class="timeline-location"><i class="fas fa-map-marker-alt"></i> Tiranë, Shqipëri</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SKILLS SECTION -->
+            <section class="section" id="skills">
+                <h2 class="section-title" data-lang-key="skills_title">AFTËSITË FRONTEND</h2>
+                <div class="skills-grid-modern">
+                    <div class="skill-box">
+                        <div class="skill-box-header">
+                            <i class="fab fa-html5 skill-icon-large"></i>
+                            <h3 class="skill-box-title">HTML5 & CSS3</h3>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tag">Semantikë</span>
+                            <span class="tag">Flexbox/Grid</span>
+                            <span class="tag">Animacione</span>
+                            <span class="tag">Tailwind CSS</span>
+                            <span class="tag">SASS/SCSS</span>
+                            <span class="tag">Responsive Design</span>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-header">
+                            <i class="fab fa-js skill-icon-large"></i>
+                            <h3 class="skill-box-title">JavaScript</h3>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tag">ES6+</span>
+                            <span class="tag">DOM Manipulation</span>
+                            <span class="tag">Fetch API</span>
+                            <span class="tag">Async/Await</span>
+                            <span class="tag">Modules</span>
+                            <span class="tag">Event Handling</span>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-header">
+                            <i class="fab fa-react skill-icon-large"></i>
+                            <h3 class="skill-box-title">React & Framework</h3>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tag">React Hooks</span>
+                            <span class="tag">Context API</span>
+                            <span class="tag">React Router</span>
+                            <span class="tag">Next.js</span>
+                            <span class="tag">Vite</span>
+                            <span class="tag">Component Library</span>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-header">
+                            <i class="fas fa-palette skill-icon-large"></i>
+                            <h3 class="skill-box-title">UI/UX Design</h3>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tag">Figma</span>
+                            <span class="tag">Adobe XD</span>
+                            <span class="tag">Wireframing</span>
+                            <span class="tag">Prototyping</span>
+                            <span class="tag">Color Theory</span>
+                            <span class="tag">Typography</span>
+                        </div>
+                    </div>
+                    <div class="skill-box highlight-box">
+                        <div class="skill-box-header">
+                            <i class="fas fa-star skill-icon-large"></i>
+                            <h3 class="skill-box-title" data-lang-key="skill4_title">Specializime</h3>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tag"><i class="fas fa-plane"></i> Website Udhëtimesh</span>
+                            <span class="tag"><i class="fas fa-store"></i> E-commerce UI</span>
+                            <span class="tag"><i class="fas fa-gem"></i> Dizajn Luksoz</span>
+                            <span class="tag"><i class="fas fa-images"></i> Galeri & Portofolio</span>
+                            <span class="tag"><i class="fab fa-whatsapp"></i> Integrim WhatsApp</span>
+                            <span class="tag"><i class="fas fa-search"></i> SEO Optimizim</span>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-header">
+                            <i class="fas fa-tools skill-icon-large"></i>
+                            <h3 class="skill-box-title">Tools & Workflow</h3>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tag">Git/GitHub</span>
+                            <span class="tag">VS Code</span>
+                            <span class="tag">Chrome DevTools</span>
+                            <span class="tag">npm/yarn</span>
+                            <span class="tag">Webpack/Vite</span>
+                            <span class="tag">Prettier/ESLint</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJECTS SHOWCASE -->
+            <section class="section section-compact" id="projects">
+                <div class="creator-showcase">
+                    <p class="creator-label" data-lang-key="creator_label">✨ Projekte të Realizuara ✨</p>
+                    <div class="creator-projects-grid">
+                        <div class="creator-item">
+                            <a href="https://erall.vercel.app" target="_blank" class="creator-project">
+                                <span class="creator-name">ERALL</span>
+                            </a>
+                            <p class="creator-tagline">Website për shitjen e parfumeve - UI modern dhe eksperiencë e fluid</p>
+                            <a href="https://erall.vercel.app" target="_blank" class="creator-github"><i class="fas fa-external-link-alt"></i> <span data-lang-key="check_out">Shiko Live</span></a>
+                        </div>
+                        <div class="creator-item">
+                            <a href="#" class="creator-project">
+                                <span class="creator-name" style="font-size: 2rem;">✧ Travel Albania ✧</span>
+                            </a>
+                            <p class="creator-tagline">Platformë turistike me harta interaktive dhe dizajn atraktiv</p>
+                            <a href="#" class="creator-github"><i class="fab fa-github"></i> <span data-lang-key="check_out">Në Zhvillim</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EDUCATION & LANGUAGES -->
+            <section class="section education-languages-section">
+                <div class="education-languages-grid">
+                    <div class="education-column">
+                        <h2 class="section-title" data-lang-key="edu_title">EDUKIMI & CERTIFIKIMET</h2>
+                        <div class="card education-card">
+                            <div class="education-header">
+                                <div>
+                                    <h3 class="education-title" data-lang-key="edu_degree">Frontend Development & UI/UX</h3>
+                                    <p class="education-school">Online Courses & Bootcamps</p>
+                                </div>
+                                <span class="badge">2020 - 2024</span>
+                            </div>
+                            <p class="education-location"><i class="fas fa-certificate"></i> Certifikata: freeCodeCamp, Frontend Masters, Scrimba</p>
+                        </div>
+                    </div>
+                    <div class="languages-column">
+                        <h2 class="section-title" data-lang-key="lang_title">GJUHËT</h2>
+                        <div class="card languages-card">
+                            <div class="language-item">
+                                <span class="language-name-inline" data-lang-key="lang_albanian">Shqip</span>
+                                <div class="language-stars"><span class="star filled"></span><span class="star filled"></span><span class="star filled"></span><span class="star filled"></span><span class="star filled"></span></div>
+                            </div>
+                            <div class="language-item">
+                                <span class="language-name-inline" data-lang-key="lang_english">Anglisht</span>
+                                <div class="language-stars"><span class="star filled"></span><span class="star filled"></span><span class="star filled"></span><span class="star filled"></span><span class="star"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT SECTION -->
+            <section class="section" id="contact">
+                <h2 class="section-title" data-lang-key="contact_title">KONTAKT</h2>
+                <div class="contact-container-compact">
+                    <p class="contact-intro" data-lang-key="contact_intro">📬 Le të krijojmë diçka të mrekullueshme së bashku</p>
+
+                    <div class="contact-form-wrapper">
+                        <h3 class="form-title" data-lang-key="form_title">📝 Dërgo një mesazh</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <div class="form-field">
+                                    <label for="name" data-lang-key="form_name">Emri juaj</label>
+                                    <input type="text" id="name" name="name" placeholder="Emri dhe Mbiemri" required>
+                                    <i class="fas fa-user form-icon"></i>
+                                </div>
+                                <div class="form-field">
+                                    <label for="email" data-lang-key="form_email">Email</label>
+                                    <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                                    <i class="fas fa-envelope form-icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="phone" data-lang-key="form_phone">Telefoni (opsional)</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+355 69 123 4567">
+                                <i class="fas fa-phone form-icon"></i>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="service" data-lang-key="form_service">Çfarë pune kërkoni?</label>
+                                <select id="service" name="service" required>
+                                    <option value="" disabled selected>Zgjidhni një opsion</option>
+                                    <option value="website">Website i ri</option>
+                                    <option value="redesign">Redesign i faqes ekzistuese</option>
+                                    <option value="frontend">Frontend Development</option>
+                                    <option value="uiux">UI/UX Design</option>
+                                    <option value="seo">Optimizim SEO</option>
+                                    <option value="other">Tjetër</option>
+                                </select>
+                                <i class="fas fa-briefcase form-icon"></i>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="message" data-lang-key="form_message">Mesazhi</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Përshkruani projektin tuaj duke përfshirë:
+• Numri i faqeve
+• Dizajni i preferuar (nëse keni)
+• Funksionalitetet e nevojshme
+• Afati kohor" required></textarea>
+                                <i class="fas fa-comment form-icon"></i>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="budget">Budget i përafërt (opsional)</label>
+                                <div class="budget-range">
+                                    <input type="range" id="budget" name="budget" min="0" max="5000" step="100" value="1000">
+                                    <span id="budget-value">€1000</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="submit-btn" id="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                <span data-lang-key="form_submit">Dërgo Mesazhin</span>
+                            </button>
+
+                            <div id="form-status" class="form-status"></div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="footer">
+                <div class="footer-compact">
+                    <div class="footer-main">
+                        <div class="footer-brand-compact">
+                            <strong>{ LLAZARKO SHUKLE }</strong>
+                            <span data-lang-key="footer_role">Frontend Developer & Web Designer</span>
+                        </div>
+                        <div class="footer-nav-compact">
+                            <a href="#hero" data-lang-key="nav_home">Kreu</a>
+                            <a href="#about" data-lang-key="nav_about">Rreth</a>
+                            <a href="#experience" data-lang-key="nav_experience">Eksperienca</a>
+                            <a href="#skills" data-lang-key="nav_skills">Aftësitë</a>
+                        </div>
+                        <div class="footer-social-compact">
+                            <a href="https://github.com/llazarko" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/llazarko-shukle" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="mailto:llazarko@dev.me"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-bottom-compact">
+                        <span>© 2025 Llazarko Shukle — Built with ☕ and ❤️</span>
+                        <a href="terminal.html" class="footer-terminal-link-compact"><i class="fas fa-terminal"></i> Terminal Mode</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // ============================================
+        // TRANSLATIONS
+        // ============================================
+        const translations = {
+            sq: {
+                nav_home: "Kreu", nav_about: "Rreth Meje", nav_experience: "Eksperienca", nav_skills: "Aftësitë", nav_contact: "Kontakt", nav_cta: "Kontakto!",
+                hero_greeting: "Përshëndetje! 👋", hero_name: "Unë jam Llazarko Shukle.",
+                hero_desc: "Frontend Developer & Web Designer kreativ, i bazuar në Tiranë, Shqipëri. Krijoj website moderne, responsive dhe plot animacione.",
+                hero_cta: "Kontakto!", coffee: "Ofro një kafe", deco_label: "Frontend Dev",
+                about_title: "RRETH MEJE",
+                about_p1: '<span class="highlight highlight-yellow">Frontend Developer & Web Designer</span> kreativ dhe i motivuar, i fokusuar në krijimin e website-ve moderne.',
+                about_p2: 'Pasioni im për <span class="highlight highlight-cyan">UI/UX design dhe frontend development</span> më shtyn të përmirësoj vazhdimisht aftësitë e mia.',
+                about_p3: 'Krijoj eksperienca <span class="highlight highlight-green">mobile-first</span>, <span class="highlight highlight-yellow">të optimizuara për SEO</span>.',
+                exp_title: "Rrugëtimi Im", exp_subtitle: "Eksperienca & Projektet",
+                exp1_role: "Freelance Frontend Developer", exp1_desc1: "Realizoj website të plota për biznese lokale.",
+                exp2_role: "Frontend Developer", exp2_desc1: "Puna në ekip për klientë ndërkombëtarë.",
+                exp3_role: "Junior Frontend", exp3_desc1: "Fillimet me HTML, CSS dhe JavaScript.",
+                exp4_role: "Autodidakt", exp4_desc1: "Mësim i pavarur përmes kurseve online.",
+                skills_title: "AFTËSITË FRONTEND", skill4_title: "Specializime",
+                creator_label: "✨ Projekte të Realizuara ✨", check_out: "Shiko Live",
+                edu_title: "EDUKIMI & CERTIFIKIMET", edu_degree: "Frontend Development & UI/UX",
+                lang_title: "GJUHËT", lang_albanian: "Shqip", lang_english: "Anglisht",
+                contact_title: "KONTAKT", contact_intro: "📬 Le të krijojmë diçka të mrekullueshme së bashku",
+                form_title: "📝 Dërgo një mesazh", form_name: "Emri juaj", form_email: "Email",
+                form_phone: "Telefoni (opsional)", form_service: "Çfarë pune kërkoni?",
+                form_message: "Mesazhi", form_submit: "Dërgo Mesazhin",
+                footer_role: "Frontend Developer & Web Designer"
+            },
+            en: {
+                nav_home: "Home", nav_about: "About", nav_experience: "Experience", nav_skills: "Skills", nav_contact: "Contact", nav_cta: "Contact Me!",
+                hero_greeting: "Hi there! 👋", hero_name: "I'm Llazarko Shukle.",
+                hero_desc: "Creative Frontend Developer & Web Designer based in Tirana, Albania. I build modern, responsive websites.",
+                hero_cta: "Get in Touch!", coffee: "Buy me a coffee", deco_label: "Frontend Dev",
+                about_title: "ABOUT ME",
+                about_p1: '<span class="highlight highlight-yellow">Frontend Developer & Web Designer</span> creative and motivated, focused on building modern websites.',
+                about_p2: 'My passion for <span class="highlight highlight-cyan">UI/UX design and frontend development</span> drives me to constantly improve.',
+                about_p3: 'I create <span class="highlight highlight-green">mobile-first</span>, <span class="highlight highlight-yellow">SEO-optimized</span> experiences.',
+                exp_title: "My Journey", exp_subtitle: "Experience & Projects",
+                exp1_role: "Freelance Frontend Developer", exp1_desc1: "Building complete websites for local businesses.",
+                exp2_role: "Frontend Developer", exp2_desc1: "Team work for international clients.",
+                exp3_role: "Junior Frontend", exp3_desc1: "Started with HTML, CSS and JavaScript.",
+                exp4_role: "Self-taught", exp4_desc1: "Self-learning through online courses.",
+                skills_title: "FRONTEND SKILLS", skill4_title: "Specializations",
+                creator_label: "✨ Featured Projects ✨", check_out: "View Live",
+                edu_title: "EDUCATION & CERTIFICATIONS", edu_degree: "Frontend Development & UI/UX",
+                lang_title: "LANGUAGES", lang_albanian: "Albanian", lang_english: "English",
+                contact_title: "CONTACT", contact_intro: "📬 Let's build something amazing together",
+                form_title: "📝 Send a message", form_name: "Your name", form_email: "Email",
+                form_phone: "Phone (optional)", form_service: "What service do you need?",
+                form_message: "Message", form_submit: "Send Message",
+                footer_role: "Frontend Developer & Web Designer"
+            }
+        };
+
+        let currentLang = localStorage.getItem('llazarko-lang') || 'sq';
+
+        // Apply language to page
+        function applyLanguage(lang) {
+            const t = translations[lang];
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (t[key]) {
+                    if (t[key].includes('<span')) el.innerHTML = t[key];
+                    else el.textContent = t[key];
+                }
+            });
+        }
+
+        // Switch language
+        function switchLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('llazarko-lang', lang);
+            applyLanguage(lang);
+            
+            // Update dropdown UI
+            const currentLangText = document.getElementById('currentLangText');
+            const currentLangFlag = document.getElementById('currentLangFlag');
+            if (currentLangText) currentLangText.textContent = lang.toUpperCase();
+            if (currentLangFlag) {
+                currentLangFlag.src = lang === 'sq' ? 'https://flagcdn.com/w40/al.png' : 'https://flagcdn.com/w40/gb.png';
+            }
+            
+            // Close dropdown
+            document.getElementById('langDropdown')?.classList.remove('active');
+        }
+
+        // Initialize language dropdown
+        function initLanguageDropdown() {
+            const dropdown = document.getElementById('langDropdown');
+            const dropdownBtn = document.getElementById('langDropdownBtn');
+            
+            if (!dropdown || !dropdownBtn) return;
+            
+            dropdownBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('active');
+            });
+            
+            document.addEventListener('click', () => {
+                dropdown.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const lang = option.getAttribute('data-lang');
+                    switchLanguage(lang);
+                });
+            });
+        }
+
+        // Theme Toggle (automatic based on system preference)
+        function initTheme() {
+            const body = document.body;
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const savedTheme = localStorage.getItem('llazarko-theme');
+            
+            if (savedTheme) {
+                body.setAttribute('data-theme', savedTheme);
+            } else {
+                body.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+            }
+        }
+
+        // Loading Screen
+        function initLoading() {
+            window.addEventListener('load', () => {
+                const loader = document.querySelector('.loader-overlay');
+                if (loader) setTimeout(() => loader.classList.add('hidden'), 1200);
+            });
+        }
+
+        // Progress Bar
+        function initProgressBar() {
+            const fill = document.querySelector('.progress-bar-fill');
+            const checkpoints = document.querySelectorAll('.checkpoint');
+            if (!fill) return;
+            
+            function update() {
+                const winHeight = window.innerHeight;
+                const docHeight = document.documentElement.scrollHeight - winHeight;
+                const scrolled = window.scrollY;
+                fill.style.width = (docHeight ? (scrolled / docHeight) * 100 : 0) + '%';
+                
+                const sections = ['hero', 'about', 'experience', 'skills', 'contact'];
+                let activeIdx = 0;
+                sections.forEach((id, idx) => {
+                    const sec = document.getElementById(id);
+                    if (sec) {
+                        const rect = sec.getBoundingClientRect();
+                        if (rect.top <= winHeight / 2 && rect.bottom >= winHeight / 2) activeIdx = idx;
+                    }
+                });
+                checkpoints.forEach((cp, idx) => {
+                    if (idx <= activeIdx) cp.classList.add('active');
+                    else cp.classList.remove('active');
+                });
+            }
+            
+            checkpoints.forEach(cp => {
+                cp.addEventListener('click', () => {
+                    const secId = cp.getAttribute('data-section');
+                    const sec = document.getElementById(secId);
+                    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+            
+            window.addEventListener('scroll', update);
+            window.addEventListener('resize', update);
+            update();
+        }
+
+        // Typing effect
+        function initTyping() {
+            const el = document.getElementById('hero-greeting');
+            if (!el) return;
+            const finalText = currentLang === 'sq' ? 'Përshëndetje! 👋' : 'Hi there! 👋';
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
+            let iterations = 0;
+            const interval = setInterval(() => {
+                el.textContent = finalText.split('').map((ch, i) => {
+                    if (i < iterations) return finalText[i];
+                    if (ch === ' ' || ch === '👋' || ch === 'ë') return ch;
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join('');
+                iterations += 1 / 3;
+                if (iterations >= finalText.length) clearInterval(interval);
+            }, 50);
+        }
+
+        // Fade in animation
+        function initFadeIn() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fade-in'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.section, .timeline-card, .skill-box').forEach(el => observer.observe(el));
+        }
+
+        // Highlight animation
+        function initHighlights() {
+            const highlights = document.querySelectorAll('.highlight');
+            function update() {
+                const scrollY = window.scrollY;
+                const winHeight = window.innerHeight;
+                highlights.forEach(h => {
+                    const rect = h.getBoundingClientRect();
+                    const elTop = rect.top + scrollY;
+                    const trigger = scrollY + winHeight * 0.8;
+                    let progress = 0;
+                    if (trigger >= elTop) progress = Math.min(1, (scrollY - elTop + 100) / 100);
+                    h.style.setProperty('--highlight-progress', `${progress * 100}%`);
+                });
+            }
+            window.addEventListener('scroll', update);
+            update();
+        }
+
+        // Navbar hide on scroll
+        function initNavbar() {
+            const navbar = document.querySelector('.navbar');
+            if (!navbar) return;
+            let last = 0;
+            window.addEventListener('scroll', () => {
+                const current = window.scrollY;
+                if (current > last && current > 100) navbar.classList.add('navbar-hidden');
+                else if (current < last) navbar.classList.remove('navbar-hidden');
+                last = current;
+            });
+        }
+
+        // Hero photo tilt
+        function initHeroPhoto() {
+            const heroPhoto = document.querySelector('.hero-photo');
+            if (!heroPhoto) return;
+            let tilted = false;
+            window.addEventListener('scroll', () => {
+                if (!tilted && window.scrollY > 5) {
+                    heroPhoto.classList.add('tilted');
+                    tilted = true;
+                }
+            });
+            heroPhoto.addEventListener('mouseenter', () => heroPhoto.classList.remove('tilted'));
+            heroPhoto.addEventListener('mouseleave', () => { if (tilted) heroPhoto.classList.add('tilted'); });
+        }
+
+        // Budget slider
+        function initBudgetSlider() {
+            const slider = document.getElementById('budget');
+            const value = document.getElementById('budget-value');
+            if (slider && value) {
+                const update = () => { value.textContent = '€' + slider.value; };
+                slider.addEventListener('input', update);
+                update();
+            }
+        }
+
+        // Contact form with EmailJS
+        function initContactForm() {
+            if (typeof emailjs === 'undefined') {
+                setTimeout(initContactForm, 500);
+                return;
+            }
+            
+            emailjs.init("S2OB-P4yCOuI4ODTa");
+            
+            const form = document.getElementById('contact-form');
+            const status = document.getElementById('form-status');
+            const btn = document.getElementById('submit-btn');
+            
+            if (!form) return;
+            
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('name')?.value.trim();
+                const email = document.getElementById('email')?.value.trim();
+                const message = document.getElementById('message')?.value.trim();
+                const service = document.getElementById('service')?.value;
+                
+                if (!name || !email || !message || !service) {
+                    status.className = 'form-status error';
+                    status.innerHTML = '❌ Ju lutem plotësoni të gjitha fushat!';
+                    setTimeout(() => { status.className = 'form-status'; }, 4000);
+                    return;
+                }
+                
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    status.className = 'form-status error';
+                    status.innerHTML = '❌ Vendosni një email të vlefshëm!';
+                    setTimeout(() => { status.className = 'form-status'; }, 4000);
+                    return;
+                }
+                
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Duke dërguar...';
+                btn.disabled = true;
+                
+                const budget = document.getElementById('budget')?.value || '1000';
+                const serviceSelect = document.getElementById('service');
+                const serviceText = serviceSelect.options[serviceSelect.selectedIndex]?.text || 'Nuk u zgjodh';
+                
+                const params = {
+                    from_name: name,
+                    from_email: email,
+                    phone: document.getElementById('phone')?.value || 'Nuk u dha',
+                    service: serviceText,
+                    message: message,
+                    budget: budget,
+                    to_name: 'Llazarko Shukle'
+                };
+                
+                try {
+                    await emailjs.send('service_u22qzct', 'template_r9j382h', params);
+                    status.className = 'form-status success';
+                    status.innerHTML = '✅ Mesazhi u dërgua me sukses!';
+                    form.reset();
+                    if (document.getElementById('budget')) document.getElementById('budget').value = '1000';
+                    if (document.getElementById('budget-value')) document.getElementById('budget-value').textContent = '€1000';
+                } catch (error) {
+                    status.className = 'form-status error';
+                    status.innerHTML = '❌ Gabim gjatë dërgimit. Provo përsëri!';
+                } finally {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    setTimeout(() => { status.className = 'form-status'; }, 5000);
+                }
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            history.scrollRestoration = 'manual';
+            window.scrollTo(0, 0);
+            
+            const savedLang = localStorage.getItem('llazarko-lang') || 'sq';
+            currentLang = savedLang;
+            applyLanguage(currentLang);
+            initLanguageDropdown();
+            initTheme();
+            initLoading();
+            initProgressBar();
+            initTyping();
+            initFadeIn();
+            initHighlights();
+            initNavbar();
+            initHeroPhoto();
+            initBudgetSlider();
+            initContactForm();
+            
+            // Smooth scroll for nav links
+            document.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
