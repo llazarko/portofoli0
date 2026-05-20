@@ -7,7 +7,7 @@
 
 :root {
   /* Default theme */
-  --bg-color: #ffffff;
+  --bg-color: #141414;
   --text-color: #ff8c00;
   --text-dim: rgba(255, 140, 0, 0.7);
   --text-bright: #ffaa33;
@@ -1047,4 +1047,3 @@ body {
   font-weight: bold;
   font-family: "Fira Code", monospace;
 }
-
